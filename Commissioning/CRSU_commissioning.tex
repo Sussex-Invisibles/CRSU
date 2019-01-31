@@ -1,6 +1,7 @@
 \documentclass[a4paper,10pt]{article}
 
 % includes
+\usepackage{authblk}
 \usepackage[english]{babel}
 \usepackage{fancyvrb}
 \usepackage[margin=3cm]{geometry}
@@ -11,15 +12,6 @@
 \usepackage{parskip}
 \usepackage{soul} % highlight text
 \usepackage{xcolor}
-% \usepackage{siunitx}
-% \usepackage{authblk}
-% \usepackage{graphicx}
-% \usepackage{placeins}
-% \usepackage{needspace}
-% \usepackage{pdfpages}
-% \usepackage{hyperref}
-% \usepackage{textcomp}
-% \usepackage{gensymb}
 
 % macros
 \newcommand{\todo}[1]{\textcolor{red}{\hl{\textbf{ToDo}}}: #1} % TODO item
@@ -29,6 +21,7 @@
 % title page
 \title{Commissioning the Sussex remote control room}
 \author{Martti Nirkko, Michal Rigan}
+\affil{University of Sussex}
 \date{\today}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -50,7 +43,7 @@ The remote shift station was set up in the ``InvisiblesLab'' (4A23), a laborator
 \subsection{Hardware specifications}
 The requirements for remote shift stations are outlined in \cite{doc4428}. The minimal requirements at the time of writing are 4 CPUs and 8~GB RAM both for the monitoring machine(s) running CentOS~6, and the Mac running OSX 10.13 (High Sierra). The recommended iMac was purchased, while available towers were used for the monitoring machines. The hardware specifications for all machines can be found in \Cref{specs}. Note that the macOS was upgraded to 10.13.4 prior to shadow shifting.
 
-Additional peripherals (monitor, speakers etc.) were added on May 25th. The final setup is shown in \Cref{crsu_setup}. \todo{Note that an Uninterruptible Power Supply (UPS) has not been installed so far, though this may be done in the near future (may require additional UPS for network switches).}
+Additional peripherals (monitor, speakers etc.) were added on 25/05/2018, and an Uninterruptible Power Supply (UPS\footnote{Eaton 5P 1550VA UPS Uninterruptible Power Supply, 230V Output, 1.1kW, 10A, {\tt \href{https://uk.rs-online.com/web/p/ups-uninterruptible-power-supplies/8239391/}{https://uk.rs-online.com/}}}) was installed on 29/01/2019. The final setup is shown in \Cref{crsu_setup}.
 
 \begin{table}[htp]
 	\centering
@@ -75,7 +68,7 @@ Additional peripherals (monitor, speakers etc.) were added on May 25th. The fina
 
 \begin{figure}[htp]
 	\includegraphics[width=\textwidth]{images/CRSU_final}
-	\caption{Setup of the CRSU remote shift station. The screen on the left corresponds to monsu1, the iMac at the centre is opersu, and the two screens on the right are connected to monsu2. The landline telephone is located to the left of the screens. Additional peripherals include the 2.1 speaker system and the microphone, both of which are connected to monsu1.}
+	\caption{Setup of the CRSU remote shift station. The screen on the left corresponds to monsu1, the iMac at the centre is opersu, and the two screens on the right are connected to monsu2. The landline telephone is located to the left of the screens. Additional peripherals include the 2.1 speaker system and the microphone, both of which are connected to monsu1. All devices except the landline phone (which is powered by an ethernet socket alone) are connected to the Uninterruptible Power Supply (UPS) at the bottom right.}
 	\label{crsu_setup}
 \end{figure}
 
