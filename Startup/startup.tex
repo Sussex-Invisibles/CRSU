@@ -13,7 +13,8 @@
             anchorcolor = blue]{hyperref}
 %\usepackage[section]{placeins}
 
-\parskip 3mm
+\parindent 0mm
+\parskip 2mm
 
 \title{CRSU Startup}
 \author{M.\ Rigan}
@@ -23,97 +24,96 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-		The details of the CRSU setup, preliminary checks, procedures to follow when starting up the control room and ideas are discussed in this document.
+	This document details the startup procedures for the SNO+ remote control room at Sussex (CRSU). The basic setup, requirements and procedures to follow when starting up the control room and ideas for improvement are discussed. For a more detailed description of the setup, please refer to the CRSU commissioning report (\href{https://www.snolab.ca/snoplus/private/DocDB/cgi/ShowDocument?docid=5063}{DocDB-5063}).
 \end{abstract}
 \clearpage
 \tableofcontents
 \clearpage
 
-\section{Set Up}
-\paragraph{•}
+\section{Basic setup}
 Machines abbreviations:
 \begin{itemize}
-	\item Operating machine (Mac) = \textbf{\texttt opersu}
-	\item Monitoring machine 1 (CentOs) = \textbf{\texttt monsu1 }
-	\item Monitoring machine 2 (CentOS) = \textbf{\texttt monsu2}
+	\item Operating machine (Mac) = \textbf{\tt opersu}
+	\item Monitoring machine 1 (CentOS) = \textbf{\tt monsu1}
+	\item Monitoring machine 2 (CentOS) = \textbf{\tt monsu2}
 \end{itemize}
 \begin{center}
 \includegraphics[width=1\textwidth]{figures/set_up.jpg} Figure 1: Current set-up of the remote control room
 \end{center}
-\paragraph{•}
-{\texttt monsu1} is the machine on the bottom left, connected to the very left monitor and the left pair of peripherals. {\texttt opersu} is the central machine, with the machine in-built into the monitor, connected to the central pair of peripherals. {\texttt monsu2} is on the right, with the double display setup. The power buttons are on the top left of both {\texttt monsu} machines and on the bottom left (backside) of the operating machine. Note that {\texttt monsu1} can take longer time to boot-up due to the RAID system and dual boot setup. {\texttt monsu2 }sometimes warns about incorrect date settings on startup, just press F1 whenever you see the warning message. Additionally, there is Windows running on a Virtual Machine (VM) on {\texttt monsu1} and the process is described later in the document.
-\paragraph{•}
-All machines have the 2 usual accounts configured: the \textbf{\texttt snoperator} and the \textbf{\texttt snotdaq} account. For {\texttt monsu} machines, you need to enter the account name ({\texttt snoperator}) at login as well. Additionally, {\texttt root} acounts are available at the {\texttt monsu} machines. Contact the remote room experts:
+
+{\tt monsu1} is the machine on the bottom left, connected to the very left monitor and the left pair of peripherals. {\tt opersu} is the central machine, with the machine in-built into the monitor, connected to the central pair of peripherals. {\tt monsu2} is on the right, with the double display setup. The power buttons are on the top left of both {\tt monsu} machines and on the bottom left (backside) of the operating machine. Note that {\tt monsu1} can take longer time to boot-up due to the RAID system and dual boot setup. {\tt monsu2} sometimes warns about incorrect date settings on startup, just press F1 whenever you see the warning message. Additionally, there is Windows running on a Virtual Machine (VM) on {\tt monsu1} and the process is described later in the document.
+
+All machines have the 2 usual accounts configured: the {\tt snoperator} and the {\tt snotdaq} account. For {\tt monsu} machines, you need to enter the account name ({\tt snoperator}) at login as well. Additionally, {\tt root} acounts are available at the {\tt monsu} machines. Contact the remote room experts
 \begin{itemize}
-\item (\href{mailto:M.Nirkko@sussex.ac.uk}{M.Nirkko@sussex.ac.uk} + 44 7948 759 907
-\item \href{mailto:M.Rigan@sussex.ac.uk}{M.Rigan@sussex.ac.uk})  +44 7467 380 455
+\item \href{mailto:M.Nirkko@sussex.ac.uk}{M.Nirkko@sussex.ac.uk} / @mnirkko / {\tt +44 7948 759 907}
+\item \href{mailto:M.Rigan@sussex.ac.uk}{M.Rigan@sussex.ac.uk} / @MichalR / {\tt +44 7467 380 455}
 \end{itemize}
 if you require details or run into trouble.
 
-\section{Preliminary}
-This list notes the preliminary requirements needed to access the remote control room:
+\section{Requirements}
+This list notes the essential requirements needed to access the remote control room:
 \begin{itemize}
 	\item SALTO access card: this is a card that allows people to access the Pevensey II. It is needed to get to the building outside the normal working hours (especially important for graveyard shifts). Speak to Simon Peeters (\href{mailto:S.J.M.Peeters@sussex.ac.uk}{S.J.M.Peeters@sussex.ac.uk}).
-	\item Access to the lab (SNO+ Laboratory - 4A23 room, 1st floor of the Pevensey II building) is code restricted.  Speak to Simon Peeters \newline (\href{mailto:S.J.M.Peeters@sussex.ac.uk}{S.J.M.Peeters@sussex.ac.uk}) to gain access.
-	\item Your SNOLab account details to log in to the VPN software
-	\item The snoperator password and the global collaboration log in details
+	\item Access to the lab (SNO+ Laboratory - 4A23 room, 1st floor of the Pevensey II building) is code restricted.  Speak to Simon Peeters to gain access.
+	\item Your SNOLAB account details to log in to the VPN software.
+	\item The {\tt snoperator} password and the global collaboration log in details.
 \end{itemize}
 
-\section{Long time (10 or more days)}
-\paragraph{•}
+\section{Long term shutdowns (10 or more days)}
 Before a detector shift is taken at a remote shift station, the shifter must make sure that all the software is up to date on the operator and monitoring machines. This not a problem unique to remote stations - the software on site machines also has to be properly maintained - but there is a frequency of use difference. If a remote station has not been used for 10 or more days the following checklist should be completed. All checks and tests should be run the day before the scheduled shift.
 \begin{itemize}
-	\item \textbf{restart both machines}: this clears out the cache and temp files, frees up RAM, kills unwanted services and (possibly) allows updates to be installed
-	\item log in as {\texttt snoperator}
-	\item \textbf{restart the VPN}: this needs to be done on all machines. Find 'Cisco anyconnect VPN' (icon on the opersu apps dock (bottom of the screen) and monsu apps bar (top left)). Use your snolab account and log into SL-SNOPLUS for Opersu and Monsu and SL-GEN on Windows machine. Select 'Connect Anyway' if there is a pop-up.
-	\item \textbf{check for updates}: \newline 
-	MONSUs: System tab $\rightarrow$ Administration $\rightarrow$ Software Update \newline 
-	MAC: the Apple symbol on apps bar $\rightarrow$ About This Mac $\rightarrow$ Software Update \newline 
-	On {\texttt monsu} machines you can use aliases: \textit{update} and \textit{update-linux} \newline
-      In the VM on {\texttt monsu1}, check if there are updates available using the window update icon in the bottom-right corners (there are none available if it is not there).
+	\item \textbf{Restart both machines}: this clears out the cache and temp files, frees up RAM, kills unwanted services and (possibly) allows updates to be installed
+	\item \textbf{Log in} as {\tt snoperator} on all machines!
+	\item \textbf{Restart the VPN}: this needs to be done on all machines. Find ``Cisco AnyConnect VPN'' (icon on the {\tt opersu} apps dock (bottom of the screen) and monsu apps bar (top left)). Use your snolab account and log into {\tt SL-SNOPLUS} for {\tt opersu} and {\tt monsu} and {\tt SL-GEN} on Windows machine. Select ``Connect Anyway'' if there is a pop-up.
+	\item \textbf{Check for updates}:
+	\begin{itemize}
+		\item Linux: System tab $\rightarrow$ Administration $\rightarrow$ Software Update \\
+		      (you can also use the aliases {\tt update} and {\tt update-linux})
+		\item Mac: On {\tt opersu}, click the Apple symbol in the application bar $\rightarrow$ About This Mac $\rightarrow$ Software Update 
+		\item Windows: In the VM on {\tt monsu1}, check if there are updates available using the window update icon in the bottom-right corners (there are none available if it is not there).
+	\end{itemize}
 \end{itemize}
 
-\section{Start Up}
-\paragraph{•}
-The usual procedure to start up all required software (the {\texttt monsu} machines have multiple virtual workspaces that you can navigate around using the CTRL + ALT + Arrows):
+\section{Startup procedures}
+The usual procedure to start up all required software (the {\tt monsu} machines have multiple virtual workspaces that you can navigate around using the CTRL + ALT + Arrows):
 \begin{itemize}
 	\item Start-up the physical machines
-	\item Start-up Windows on the VirtualBox: On {\texttt monsu1} there is icon `Oracle VM VirtualBox' located on the top right of the desktop. Start the app, select Windows 7 Pro (either double click the item in the list on the left or click the 'Start' green arrow). Log in as snoperator. Connect to VPN using the `VPN Client' icon on the desktop. Connect to the \textbf{SL-GEN} group. (Connecting to the VPN on Virtual machine can result in disconnecting from another VPN on another machine - this is Cisco security to prevent from overloading. Be sure to reconnect and everything runs fine - it only disconnects once!). Start up the phone application by selecting the `IP Phone' icon on the desktop. Finally open the UPS platform using the bookmark in firefox web browser (the UPS platform only works on SL-GEN, therefore can only be opened on this VM)
-	\item Connect to VPN software on all machines: Find 'Cisco anyconnect VPN' (icon on the opersu apps dock (bottom of the screen) and monsu apps bar (top left)). Use your snolab account and log into SL-SNOPLUS. Select `Connect Anyway' if there is a pop-up (again, check if you weren't disconnected randomly on other machines)
-	\item For {\texttt monsu1}:
+	\item Start-up Windows on the VirtualBox: On {\tt monsu1} there is icon ``Oracle VM VirtualBox'' located on the top right of the desktop. Start the app, select the latest snapshot of Windows 7 Pro (either double click the item in the list on the left or click the ``Start'' green arrow). Log in as snoperator. Connect to VPN using the ``VPN Client'' icon on the desktop. Connect to the {\tt SL-GEN} group. (Connecting to the VPN on Virtual machine can result in disconnecting from another VPN on another machine - this is Cisco security to prevent from overloading. Be sure to reconnect and everything runs fine - it only disconnects once!). Start up the phone application by selecting the ``IP Phone'' icon on the desktop. Finally open the UPS platform using the bookmark in firefox web browser (the UPS platform only works on {\tt SL-GEN}, therefore can only be opened on this VM)
+	\item Connect to VPN software on all machines: Find ``Cisco AnyConnect VPN'' (icon on the {\tt opersu} apps dock (bottom of the screen) and monsu apps bar (top left)). Use your snolab account and log into {\tt SL-SNOPLUS}. Select ``Connect Anyway'' if there is a pop-up (again, check if you weren't disconnected randomly on other machines)
+	\item For {\tt monsu1}:
 	\begin{itemize}
-		\item Start up: Alarm GUI, FEC FIFO, MTC GUI, Supernova monitor, DAQ log and Builder log by clicking appropriate icons on the desktop (use multiple workspaces as appropriate). Sometimes a DB connection pop-up appears for the ALARM GUI (possibly other apps), use the collaboration log-in to connect. Supernova and Builder require the snoperator's password to connect.		
+		\item Start up: Alarm GUI, FEC FIFO, MTC GUI, Supernova monitor, DAQ log and Builder log by clicking appropriate icons on the desktop (use multiple workspaces as appropriate). Sometimes a DB connection pop-up appears for the {\tt alarmGUI} (possibly other apps), use the collaboration log-in to connect. Supernova and Builder require the snoperator's password to connect.		
 			\item Run Scope from the desktop (icon).
 			\item This machine also runs Check Rates and Polling GUI when needed during the shift by selecting appropriate application on the desktop. List of all application is also available at Applications $\rightarrow$ Other from the taskbar.
 		\item Make sure the virtual phone software is running on windows virtual machine as described above.
 	\end{itemize}
-	\item For {\texttt monsu2} (this machine is dedicated to run high-load streaming apps):
+	\item For {\tt monsu2} (this machine is dedicated to run high-load streaming apps):
 	\begin{itemize}
-		\item run the local Dispatcher by clicking the icon on the desktop
-		\item start 4 copies of XSNOED by clicking the icons on the desktop. There are specific icons to open Top or Bottom view xsnoed, each of which will open the application on the respective monitor. The suggested settings are: live, sum (-PED), 100 NHit and 500 NHit environments (again, use as many workspaces as you like)
+		\item Run the local Dispatcher by clicking the icon on the desktop
+		\item Start 4 copies of {\tt xsnoed} by clicking the icons on the desktop. There are specific icons to open Top or Bottom view {\tt xsnoed}, each of which will open the application on the respective monitor. The suggested settings are: live, sum (-PED), 100 NHit and 500 NHit environments (again, use as many workspaces as you like)
 		\item Open the Minard stream in browser (bookmarks provided)
-\item be sure to have Slow control, Detector State, Detector State Check, Nearline monitor, PMT Calibration Summary, Grafana (data-flow) and the Weather forecast (blizzards) tabs open in a browser (bookmarks provided)
+		\item Be sure to have Slow Control, Detector State, Detector State Check, Nearline Monitor, PMT Calibration Summary, Grafana (data-flow) and the Weather forecast (blizzards/thunderstorms) tabs open in a browser (bookmarks provided).
 
 	\end{itemize}
-\item For {\texttt opersu}:
+\item For {\tt opersu}:
 	\begin{itemize}
-		\item Connect to remote drive with orca files: 'Go' tab from the taskbar (top left) $\rightarrow$ Connect to Server. Select buffer1 from the Favorite Servers
-		\item start TUBii audio by clicking the 'TUB\_audio.m3u' icon on the desktop. Be sure to disable video to decrease the load (Video $\rightarrow$ Video Track $\rightarrow$ Disable)
-		\item When you are ready for the handover (after calling the previous shifter), right click the snot\_main.Orca file and select 'Open With' $\rightarrow$ Orca(default). This ensures the correct version of Orca is opened instead of using the icon in the App doc
-		\item check correct version of Orca is running at \href{https://snopl.us/monitoring/orca-session-logs}{orca log}
+		\item Connect to remote drive with orca files: ``Go'' tab from the taskbar (top left) $\rightarrow$ Connect to Server. Select {\tt buffer1} from the Favorite Servers
+		\item Start TUBii audio by clicking the ``{\tt TUB\_audio.m3u}'' icon on the desktop. Be sure to disable video to decrease the load (Video $\rightarrow$ Video Track $\rightarrow$ Disable)
+		\item When you are ready for the handover (after calling the previous shifter), right click the {\tt snot\_main.Orca} file and select ``Open With'' $\rightarrow$ Orca(default). This ensures the correct version of Orca is opened instead of using the icon in the App doc
+		\item Check correct version of Orca is running in \href{https://snopl.us/monitoring/orca-session-logs}{Orca Session Log}: Monitoring $\rightarrow$ Control Rooms $\rightarrow$ Orca.
 	\end{itemize}
 \item Be sure to have shift report page and Slack open at any of the machines (dedicated app installed at Mac)
-\item To call international numbers (such as on-call expert), dial \newline 9-1470-00-\textit{number}
+\item To call international numbers (such as on-call expert), a number of prefixes are needed: dial {\tt 9-1470-00-number}.
 \end{itemize}
 
-\section{In case of a fire alarm}
-
-Make sure you have your mobile and a piece of paper with the expert's contact details.
+\section{Fire alarms}
+Make sure you have your mobile phone and a piece of paper with the expert's contact details. If you incur a large personal phone bill, please claim this on expenses and get Simon Peeters (\href{mailto:S.J.M.Peeters@sussex.ac.uk}{S.J.M.Peeters@sussex.ac.uk}) to sign it off for you.
 
 \section{Ideas}
 \begin{itemize}
 	\item Global SALTO card for lab?
-      \item Improve fire alarm procedure.
+	\item Improve fire alarm procedure.
+	\item Install UPS.
 \end{itemize}
 
 \end{document}
