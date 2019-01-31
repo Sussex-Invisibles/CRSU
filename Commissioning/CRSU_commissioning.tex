@@ -74,7 +74,7 @@ Additional peripherals (monitor, speakers etc.) were added on May 25th. The fina
 \end{table}
 
 \begin{figure}[htp]
-	\includegraphics[width=\textwidth]{\string~/Dropbox/CRSU/Hardware/CRSU_final.jpg}
+	\includegraphics[width=\textwidth]{images/CRSU_final}
 	\caption{Setup of the CRSU remote shift station. The screen on the left corresponds to monsu1, the iMac at the centre is opersu, and the two screens on the right are connected to monsu2. The landline telephone is located to the left of the screens. Additional peripherals include the 2.1 speaker system and the microphone, both of which are connected to monsu1.}
 	\label{crsu_setup}
 \end{figure}
@@ -131,18 +131,18 @@ The network stability was tested over the course of 7 days on both machines usin
 \subsection{Latency}
 Because the above results are not very informative with regards to latency, we decided to continuously ping a machine on the VPN network. This was started 4~days before the first shadow shift, and ended near the end of the shift. The average latency was 110~ms with a minimum of 102~ms, although it regularly increased to up to 140~ms about once an hour (presumed to be caused by some increase in network activity on-site). Single events caused even higher spikes, but these were only temporary. The most significant increase occurred when we started shifting, with the latency fluctuating up to 200~ms with some even higher spikes.
 
-It was during shifts that most of the latency-related problems (timeouts etc.) occurred. This caused a lot of problems that affected detector operations, and was found to be caused by network-intensive ``streaming'' applications (e.g. {\tt xsnoed}). Some tests were therefore run under load over the course of 30 minutes. \Cref{load_linux,load_mac} show the latency for both machines during this test phase. It appears that the current threshold for a timeout at 150~ms is still too low, and the problems observed overseas would be resolved by increasing it to 250~ms. The increase in latency was less extreme on the Mac, which only runs ORCA and the TUBii audio.
+It was during shifts that most of the latency-related problems (time-outs etc.) occurred. This caused a lot of problems affecting detector operations, and was found to be caused by network-intensive ``streaming'' applications (e.g. {\tt xsnoed}). Some tests were therefore run under load over the course of 30 minutes. \Cref{load_linux,load_mac} show the latency for both machines during this test phase. It appears that the current threshold for a timeout at 150~ms is still too low, and the problems observed overseas would be resolved by increasing it to 250~ms. The increase in latency was less extreme on the Mac, which only runs ORCA and the TUBii audio.
 
 \begin{figure}[htp]
 	\centering
-	\includegraphics[width=0.8\textwidth,trim={0 3mm 0 1mm},clip]{\string~/Dropbox/CRSU/Network/Latency/Legacy/dbug_martti_tests_2.pdf}
+	\includegraphics[width=0.8\textwidth,trim={0 3mm 0 1mm},clip]{images/dbug_martti_tests_2}
 	\caption{Latency of the VPN connection on the Linux machine without any load, with the SNO+ cameras page open in Firefox (CAM), with various instances of the live event display (XSNOED), and both. The horizontal lines show the current and proposed thresholds for a timeout of the monitoring apps.}
 	\label{load_linux}
 \end{figure}
 
 \begin{figure}[htp]
 	\centering
-	\includegraphics[width=0.8\textwidth,trim={0 3mm 0 1mm},clip]{\string~/Dropbox/CRSU/Network/Latency/Legacy/dbug_martti_tests_mac.pdf}
+	\includegraphics[width=0.8\textwidth,trim={0 3mm 0 1mm},clip]{images/dbug_martti_tests_mac}
 	\caption{Latency of the VPN connection on the Mac without any load, with the TUB camera stream (VIDEO) and with the video disabled (AUDIO).}
 	\label{load_mac}
 \end{figure}
@@ -180,7 +180,7 @@ After realising that these issues were caused by an increased latency, we manage
 
 \begin{figure}[htp]
 	\centering
-	\includegraphics[width=0.8\textwidth,trim={25mm 4mm 32mm 13mm},clip]{alarm_gui_checks}
+	\includegraphics[width=0.8\textwidth,trim={25mm 4mm 32mm 13mm},clip]{images/alarm_gui_checks}
 	\caption{Time since last successful query as registered by the alarm GUI. The average time is indicated by the black line at 6.2~s, but a significant fraction of the distribution is above 10~s.}
 	\label{alarm_gui}
 \end{figure}
@@ -299,29 +299,29 @@ E.~Leming, \docdb{5051}
 % \Cref{internet_linux,internet_mac,vpn_linux,vpn_mac} show the network connectivity plots produced using Karin's scripts \cite{doc5040}.
 % 
 % \begin{figure}[htp]
-% 	\includegraphics[width=\textwidth,trim={5mm 7mm 5mm 5mm},clip]{\string~/Dropbox/CRSU/Network/Connectivity/Monitoring_Linux/SNOLAB_ping_failures.png}
-% 	\includegraphics[width=\textwidth,trim={5mm 7mm 5mm 5mm},clip]{\string~/Dropbox/CRSU/Network/Connectivity/Monitoring_Linux/SNOLAB_dead_time.png}
+% 	\includegraphics[width=\textwidth,trim={5mm 7mm 5mm 5mm},clip]{images/SNOLAB_ping_failures.png}
+% 	\includegraphics[width=\textwidth,trim={5mm 7mm 5mm 5mm},clip]{images/SNOLAB_dead_time.png}
 % 	\caption{Internet connectivity on the Linux machine, monitored over the course of 7 days. A single failure that lasted 5 seconds was registered, caused by ITS rerouting an ethernet cable.}
 % 	\label{internet_linux}
 % \end{figure}
 % 
 % \begin{figure}[htp]
-% 	\includegraphics[width=\textwidth,trim={5mm 7mm 5mm 5mm},clip]{\string~/Dropbox/CRSU/Network/Connectivity/Monitoring_Mac/SNOLAB_ping_failures.png}
-% 	\includegraphics[width=\textwidth,trim={5mm 7mm 5mm 5mm},clip]{\string~/Dropbox/CRSU/Network/Connectivity/Monitoring_Mac/SNOLAB_dead_time.png}
+% 	\includegraphics[width=\textwidth,trim={5mm 7mm 5mm 5mm},clip]{images/SNOLAB_ping_failures.png}
+% 	\includegraphics[width=\textwidth,trim={5mm 7mm 5mm 5mm},clip]{images/SNOLAB_dead_time.png}
 % 	\caption{Internet connectivity on the Mac machine, monitored over the course of 7 days. A single failure that lasted 70 seconds was registered, corresponding to the time an IT expert was rerouting our ethernet socket (i.e. the ethernet cable was unplugged).}
 % 	\label{internet_mac}
 % \end{figure}
 % 
 % \begin{figure}[htp]
-% 	\includegraphics[width=\textwidth,trim={5mm 7mm 5mm 5mm},clip]{\string~/Dropbox/CRSU/Network/Connectivity/Monitoring_Linux/VPN_ping_failures.png}
-% 	\includegraphics[width=\textwidth,trim={5mm 7mm 5mm 5mm},clip]{\string~/Dropbox/CRSU/Network/Connectivity/Monitoring_Linux/VPN_dead_time.png}
+% 	\includegraphics[width=\textwidth,trim={5mm 7mm 5mm 5mm},clip]{images/VPN_ping_failures.png}
+% 	\includegraphics[width=\textwidth,trim={5mm 7mm 5mm 5mm},clip]{images/VPN_dead_time.png}
 % 	\caption{VPN connectivity on the Linux machine, monitored over the course of 7 days. Ping failures occurred relatively frequently, but never lasted for longer than 30 seconds.}
 % 	\label{vpn_linux}
 % \end{figure}
 % 
 % \begin{figure}[htp]
-% 	\includegraphics[width=\textwidth,trim={5mm 7mm 5mm 5mm},clip]{\string~/Dropbox/CRSU/Network/Connectivity/Monitoring_Mac/VPN_ping_failures.png}
-% 	\includegraphics[width=\textwidth,trim={5mm 7mm 5mm 5mm},clip]{\string~/Dropbox/CRSU/Network/Connectivity/Monitoring_Mac/VPN_dead_time.png}
+% 	\includegraphics[width=\textwidth,trim={5mm 7mm 5mm 5mm},clip]{images/VPN_ping_failures.png}
+% 	\includegraphics[width=\textwidth,trim={5mm 7mm 5mm 5mm},clip]{images/VPN_dead_time.png}
 % 	\caption{Same as Fig.~\ref{vpn_linux}, but for the Mac. The 70~second disconnect corresponds to the ethernet cable being swapped, see Fig.~\ref{internet_mac}.}
 % 	\label{vpn_mac}
 % \end{figure}
@@ -348,13 +348,13 @@ E.~Leming, \docdb{5051}
 % \end{figure}
 % 
 % \begin{figure}[htp]
-% 	\includegraphics[width=\textwidth,trim={0 3mm 0 1mm},clip]{\string~/Dropbox/CRSU/Network/Latency/Legacy/dbug_no_load_linux.pdf}
+% 	\includegraphics[width=\textwidth,trim={0 3mm 0 1mm},clip]{images/dbug_no_load_linux.pdf}
 % 	\caption{Latency of the VPN connection on the Linux machine without any load, monitored over the course of a day. A cutoff is applied at 500~ms, any higher values (or timeouts) are set to that value. There are periodic increases to around 130~ms about once an hour, which we assume to be due to increased on-site activity (e.g. copying of files after a run rollover).}
 % 	\label{no_load_linux}
 % \end{figure}
 % 
 % \begin{figure}[htp]
-% 	\includegraphics[width=\textwidth,trim={0 3mm 0 1mm},clip]{\string~/Dropbox/CRSU/Network/Latency/Legacy/dbug_no_load_mac.pdf}
+% 	\includegraphics[width=\textwidth,trim={0 3mm 0 1mm},clip]{images/dbug_no_load_mac.pdf}
 % 	\caption{Same as \Cref{no_load_linux}, but for the Mac. The large black dots indicate ping timeouts. It is unclear what caused these, as the Linux machine did not see any timeouts.}
 % 	\label{no_load_mac}
 % \end{figure}
@@ -372,7 +372,7 @@ E.~Leming, \docdb{5051}
 % 	\label{mac_hist_final}
 % \end{figure}
 
-The most comprehensive latency tests were run by Martti from Fri, 25/05/2018 to Tue, 05/06/2018, for an uninterrupted duration of over 10 days. From each machine (monsu1, monsu2, opersu) the following hosts were pinged continuously, with a pause of 1 second in between pings:
+The most comprehensive latency tests were run by Martti from 25/05/2018 -- 05/06/2018, for an uninterrupted duration of over 10 days. From each machine (monsu1, monsu2, opersu) the following hosts were pinged continuously, with a pause of 1 second in between pings:
 \begin{Verbatim}
 	www.oxford.ac.uk
 	vpn1.snolab.ca
@@ -386,27 +386,27 @@ SNOLAB VPN was pinged to demonstrate the availability of the VPN, and that the l
 
 \begin{figure}[htp]
 	\centering
-	\includegraphics[width=\textwidth]{\string~/Dropbox/CRSU/Network/Latency/Pevensey/monsu1_latency}\\
-	\includegraphics[width=\textwidth]{\string~/Dropbox/CRSU/Network/Latency/Pevensey/monsu2_latency}\\
-	\includegraphics[width=\textwidth]{\string~/Dropbox/CRSU/Network/Latency/Pevensey/opersu_latency}
+	\includegraphics[width=\textwidth]{images/monsu1_latency}\\
+	\includegraphics[width=\textwidth]{images/monsu2_latency}\\
+	\includegraphics[width=\textwidth]{images/opersu_latency}
 	\caption{Various latencies at CRSU, monitored continuously over the course of 10 days. Note the logarithmic vertical scale. The latency to the UK host is of the order of 10~ms, while the latency to overseas machines tends to be of the order of 100~ms. VPN disconnects are represented by black dots, set to an arbitrary value of 5~s.}
 	\label{latency_final_1}
 \end{figure}
 
 \begin{figure}[htp]
 	\centering
-	\includegraphics[width=\textwidth]{\string~/Dropbox/CRSU/Network/Latency/Pevensey/monsu1_latency_zoom}\\
-	\includegraphics[width=\textwidth]{\string~/Dropbox/CRSU/Network/Latency/Pevensey/monsu2_latency_zoom}\\
-	\includegraphics[width=\textwidth]{\string~/Dropbox/CRSU/Network/Latency/Pevensey/opersu_latency_zoom}
-	\caption{Same as \Cref{latency_final_1}, but showing only the latencies for SNOLAB hosts, as a scatterplot on a linear scale. It can clearly be seen when CRSU was running under load, i.e. taking shifts (graveyard shifts from 28/05/2018 to 31/05/2018). The VPN connection (black dots) however remains stable at a relatively low 102~ms.}
+	\includegraphics[width=\textwidth]{images/monsu1_latency_zoom}\\
+	\includegraphics[width=\textwidth]{images/monsu2_latency_zoom}\\
+	\includegraphics[width=\textwidth]{images/opersu_latency_zoom}
+	\caption{Same as \Cref{latency_final_1}, but showing only the latencies for SNOLAB hosts, as a scatterplot on a linear scale. It can clearly be seen when CRSU was running under load, i.e. taking shifts (graveyard shifts 28/05/2018 -- 31/05/2018). The VPN connection (black dots) however remains stable at a relatively low 102~ms.}
 	\label{latency_final_2}
 \end{figure}
 
 \begin{figure}[htp]
 	\centering
-	\includegraphics[width=\textwidth]{\string~/Dropbox/CRSU/Network/Latency/Pevensey/monsu1_latency_zoom_shift}\\
-	\includegraphics[width=\textwidth]{\string~/Dropbox/CRSU/Network/Latency/Pevensey/monsu2_latency_zoom_shift}\\
-	\includegraphics[width=\textwidth]{\string~/Dropbox/CRSU/Network/Latency/Pevensey/opersu_latency_zoom_shift}
+	\includegraphics[width=\textwidth]{images//monsu1_latency_zoom_shift}\\
+	\includegraphics[width=\textwidth]{images//monsu2_latency_zoom_shift}\\
+	\includegraphics[width=\textwidth]{images//opersu_latency_zoom_shift}
 	\caption{Same as \Cref{latency_final_2}, but zoomed in on two of the days during which shifts were being taken at CRSU. On monsu1, which runs most monitoring tools as well as the software phone, the typical latency was just above 100~ms, with occasional fluctuations up to 200~ms. On monsu2 however, which monitored the cameras as well as 4 instances of xsnoed, the latency was most often at its highest values, i.e. 200~ms. The operating machine, which runs ORCA and the TUBii audio, was least affected by the latency fluctuations. The occasional peaks around 210~ms may be due to saving the ORCA file.}
 	\label{latency_final_3}
 \end{figure}
@@ -448,7 +448,6 @@ was implemented at {\tt ORFec32.Controller.m} file (2 places) and at {\tt ORSNOC
 Afterwards ORCA was tested while connected to teststand. {\tt Couchdb} at teststand was modified temporarily to be accessible from the vpn. This can be done be modifying specific {\tt .ini} file. This still require VPN access so it is secure and safe as the teststand's {\tt couchdb} is not the one that the detector is connected to. We were able to start, stop, restart and resync runs without any issues. Opening and closing windows as well as saving the settings all went successfully.
 
 For more details regarding network monitoring and ORCA issues please contact the CRSU experts.
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
