@@ -1,0 +1,31 @@
+cscotun0  Link encap:UNSPEC  HWaddr 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00  
+          inet addr:192.168.80.233  P-t-P:192.168.80.233  Mask:255.255.255.0
+          inet6 addr: fe80::313c:8d5a:26bf:2b15/126 Scope:Link
+          UP POINTOPOINT RUNNING NOARP MULTICAST  MTU:1406  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:3 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:500 
+          RX bytes:0 (0.0 b)  TX bytes:144 (144.0 b)
+
+em1       Link encap:Ethernet  HWaddr D4:BE:D9:93:4B:94  
+          inet addr:139.184.52.85  Bcast:139.184.53.255  Mask:255.255.254.0
+          inet6 addr: fe80::d6be:d9ff:fe93:4b94/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:580 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:113 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:116289 (113.5 KiB)  TX bytes:18510 (18.0 KiB)
+          Interrupt:20 Memory:e1500000-e1520000 
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:129 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:129 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:29190 (28.5 KiB)  TX bytes:29190 (28.5 KiB)
+
+ ////////////////////////////////////////////////////////////
+monsu2
+

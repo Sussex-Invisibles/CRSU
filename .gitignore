@@ -1,0 +1,18 @@
+# Ignore TeX build files
+*.aux
+*.backup
+*.out
+*.swp
+*.synctex.gz
+
+# Ignore log files
+*.crash
+*.data
+*.log
+
+# Ignore scripts
+*.py
+*.sh
+
+# Ignore Dropbox attributes
+*.dropbox.attr

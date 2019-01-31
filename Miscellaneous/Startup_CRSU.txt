@@ -1,0 +1,55 @@
+CRSU startup procedure
+
+If it's been a long time since last shift:
+	-> restart both machines
+	-> restart VPNs
+	-> on monsu: run commands:
+				-> $ update-linux
+				-> $ update (compare two outputs here, if not the same, contact CRSU expert)
+	-> check ORCA version: go to orca session page and check what version is currently being run to your local version - if different contact expert
+
+
+MAC
+-> connect to VPN
+-> start slack
+-> start TUBI sound: Use iMac, click on snoTUBII.m3u
+	Can disable video if you want by going Video -> Video Track -> Disable
+-> load shared drive :
+	Open to orca_files network folder on the iMac
+	In Finder, Go -> Connect to Server
+		Server Address: smb://operug1.sp.snolab.ca/orca_files
+		** if this doesn't work there is now new address saved in favourites with the IP instead of hostname (Macs are 'special')
+-> start ORCA when appropriate!
+
+LINUX
+-> connect to VPN
+-> start the usual apps (icons on the desktop): AlarmGUI, MTC GUI, FEC FIFO GUI
+-> start DAG log (icon on the desktop), if that doesn't work: 	ssh snotdaq@buffer1.sp.snolab.ca
+	vale password (V4...)
+	$ tail_daq_log	
+-> connect to builder log: use alias $ builder ( if that doesn't work: In terminal, $ ssh buffer1.sp.snolab.ca 
+	0r4...
+	$ tail_log /raid/data/l1)
+-> conncet to scopes: use alias $ scope (remember, this steals the view from other user!), if that does not work: 
+-> start xsnoed: You should have multiple windows open on multiple workspaces (** suggested options are: live, SUM, 100NHit, 500Nhit)
+Move workspaces on centOS by pressing Ctrl+Alt+Arrow keys
+	In XSNOED, File -> Dispatcher... 
+		Dispatcher Name: nlag.sp.snolab.ca
+		Connect
+-> slow control, Stream, Detector status, Detector status check, Nearline monitoring, Data flow and cameras are all bookmarked in the firefox on linux machine
+
+
+WINDOWS
+-> start the VM by running the Oracle VM VirtualBox (desktop icon or in Applications bar)
+-> connect to VPN (SL-GEN group)
+-> start the IP Phone app:  **some issues on startup: click 'retry' until the progress bar is full, then click 'cancel' 
+
+
+
+Starting VPN: 
+Open cisco anyconnect vpn
+	You can find instructions on how to connect to the SNOLAB network here:
+		https://www.snolab.ca/docushare/dsweb/View/Wiki-11/VPN%20-%20Virtual%20Private%20Networks
+	Connect to vpn1.snolab.ca
+	** connect to the SL-SNOPLUS group
+	You'll need your SNOLAB user account to connect.

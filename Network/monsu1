@@ -1,0 +1,40 @@
+cscotun0  Link encap:UNSPEC  HWaddr 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00  
+          inet addr:192.168.80.226  P-t-P:192.168.80.226  Mask:255.255.255.0
+          inet6 addr: fe80::515d:7545:510d:55de/128 Scope:Link
+          UP POINTOPOINT RUNNING NOARP MULTICAST  MTU:1406  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:1 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:500 
+          RX bytes:0 (0.0 b)  TX bytes:48 (48.0 b)
+
+eth0      Link encap:Ethernet  HWaddr 48:4D:7E:F9:E6:61  
+          inet addr:139.184.52.153  Bcast:139.184.53.255  Mask:255.255.254.0
+          inet6 addr: fe80::4a4d:7eff:fef9:e661/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:2545 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:145 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:403603 (394.1 KiB)  TX bytes:18148 (17.7 KiB)
+          Interrupt:20 Memory:f7700000-f7720000 
+
+eth1      Link encap:Ethernet  HWaddr 48:4D:7E:F9:E6:81  
+          UP BROADCAST MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:0 (0.0 b)  TX bytes:0 (0.0 b)
+          Memory:f7600000-f767ffff 
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:178 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:178 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:27589 (26.9 KiB)  TX bytes:27589 (26.9 KiB)
+
+
+//////////////////////////////////////////////////////////////////
+cssd018593.ad.susx.ac.uk
+
