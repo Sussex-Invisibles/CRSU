@@ -20,7 +20,7 @@
 
 % title page
 \title{Commissioning the Sussex remote control room}
-\author{Martti Nirkko, Michal Rigan}
+\author{Martti Nirkko, Michal Rigan, Charlie Mills}
 \affil{University of Sussex}
 \date{\today}
 
@@ -31,8 +31,15 @@
 
 \maketitle
 
+% Header
+\begin{flushright}
+\vspace{-6cm}
+SNO+ DocDB-5063
+\vspace{6cm}
+\end{flushright}
+
 \begin{abstract}
-This document describes the recent commissioning of another remote shift station for SNO+, the Control Room at Sussex (CRSU). Three machines were set up following available instructions for commissioning remote control rooms, and a virtual machine was used to run the phone software. The network stability was monitored over the course of 7 days, followed by 3 days of shadow shifts from 20th -- 22nd April 2018. A number of problems were encountered, all of which were successfully debugged. First detector shifts were taken at CRSU from 11th -- 17th May (Michal) and 28th -- 31st May (Martti). Some additional test were done regarding network stability and ORCA stability. The results of the commissioning, including testing and errors encountered are discussed in this document.
+This document describes the recent commissioning of another remote shift station for SNO+, the Control Room at Sussex (CRSU). Three machines were set up following available instructions for commissioning remote control rooms, and a virtual machine was used to run the phone software. The network stability was monitored over the course of 7 days, followed by 3 days of shadow shifts from 20th -- 22nd April 2018. A number of problems were encountered, all of which were successfully debugged. First detector shifts were taken at CRSU from 11th -- 17th May 2018 (Michal) and 28th -- 31st May 2018 (Martti). Some additional test were done regarding network stability and ORCA stability. The results of the commissioning, including testing and errors encountered are discussed in this document.
 \end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -41,13 +48,15 @@ This document describes the recent commissioning of another remote shift station
 The remote shift station was set up in the ``InvisiblesLab'' (4A23), a laboratory used by Simon Peeters' group located in Pevensey II building, right next to the SNO+ group members' offices. To enter the lab, the shifter must know the 4-digit door code. To obtain the code, the lab's safety briefing must have been completed. To gain entry to the building outside normal office hours, the shifter must acquire a SALTO access card from the MPS school offices. Note that the access card needs to be used regularly (every 3 months) in order to stay valid, which turned out to be a problem for one of the shifters. Since a second shifter was already in the building at the time, this was not a huge issue. Once in the building, it is very easy to renew the access card as it does not require human interaction. This card is a standard for any postgraduate student and staff at the university.
 
 \subsection{Hardware specifications}
-The requirements for remote shift stations are outlined in \cite{doc4428}. The minimal requirements at the time of writing are 4 CPUs and 8~GB RAM both for the monitoring machine(s) running CentOS~6, and the Mac running OSX 10.13 (High Sierra). The recommended iMac was purchased, while available towers were used for the monitoring machines. The hardware specifications for all machines can be found in \Cref{specs}. Note that the macOS was upgraded to 10.13.4 prior to shadow shifting.
+The requirements for remote shift stations are outlined in \cite{doc4428}. The minimal requirements at the time of writing are 4 CPUs and 8~GB RAM both for the monitoring machine(s) running CentOS~6, and the Mac running OSX 10.13 (High Sierra). The hardware specifications for all machines can be found in \Cref{specs}. Note that the macOS was upgraded to 10.13.4 prior to shadow shifting.
 
 Additional peripherals (monitor, speakers etc.) were added on 25/05/2018, and an Uninterruptible Power Supply (UPS\footnote{Eaton 5P 1550VA UPS Uninterruptible Power Supply, 230V Output, 1.1kW, 10A, {\tt \href{https://uk.rs-online.com/web/p/ups-uninterruptible-power-supplies/8239391/}{https://uk.rs-online.com/}}}) was installed on 29/01/2019. The final setup is shown in \Cref{crsu_setup}.
 
+In June 2019, the Dell T7910 workstation was replaced with a Dell Precision 5820 Tower to free up the former machine (128 GB RAM) for high-end graphics applications. The installation and setup was done by Charlie. A shift was taken by Martti on 01/07/2019 to confirm the new machine hosting {\tt monsu1} was working in order.
+
 \begin{table}[htp]
 	\centering
-	\caption{Hardware specs for the CRSU computers. Note that the monitoring machine also runs Windows 7 on a virtual machine (VM), to which 1 CPU core and 8~GB RAM are allocated.}
+	\caption{Hardware specs for the CRSU computers. Note that {\tt monsu1} also runs Windows 7 on a virtual machine (VM), to which 1 CPU core and 2~GB RAM are allocated.}
 	\label{specs}
 	\vspace{3mm}
 	    \small
@@ -55,14 +64,14 @@ Additional peripherals (monitor, speakers etc.) were added on 25/05/2018, and an
 	\begin{tabular}{| l | l | l | l |}
 		\hline
 		& \textbf{Operating machine} & \textbf{Monitoring machine 1} & \textbf{Monitoring machine 2}\\ \hline
-		Hostname & {\tt mps019491.phys.susx.ac.uk} & {\tt cssd018593.ad.susx.ac.uk} & {\tt monsu2} \\ \hline
-		Hardware & iMac (Retina 5K, 27'', 2017) & Dell T7910 workstation & Dell Optiplex 790\\ \hline
-		System & macOS 10.13.4 (High Sierra) & CentOS 6.9 & CentOS 6.9 \\ \hline
-		Processor & Intel Core i5 & Intel Xeon E5-2667 v3 & Intel Core i7 2600 \\ \hline
-		\#CPUs & 4 cores (3.4 GHz) & 8 (16 virt.) cores (3.2 GHz) & 4 (8 virt.) cores (3.4 GHz) \\ \hline
-		Memory & 8 GB (DDR4, 2400 MHz) & 128 GB (PC4, 2400MHz) & 8 GB (DDR3, 1333 MHz)\\ \hline
-		Graphics & Radeon Pro 570 (4 GB) & NVIDIA NVS 310 (512 MB) & AMD Radeon HD 5450 \\ \hline
-		Disk & 1 TB & 1.5 TB (RAID) & 1 TB \\ \hline
+		Hostname & {\tt opersu.phys.susx.ac.uk} & {\tt monsu1.phys.susx.ac.uk} & {\tt monsu2.phys.susx.ac.uk} \\ \hline
+		Hardware & iMac (Retina 5K, 27'', 2017) & Dell 5820 workstation & Dell Optiplex 790\\ \hline
+		System & macOS 10.13.6 (High Sierra) & CentOS 6.10 & CentOS 6.10 \\ \hline
+		Processor & Intel Core i5 & Intel Xeon W-2102 & Intel Core i7 2600 \\ \hline
+		\#CPUs & 4 cores (3.4 GHz) & 4 cores (2.9 GHz) & 4 (8 virt.) cores (3.4 GHz) \\ \hline
+		Memory & 8 GB (DDR4, 2400 MHz) & 16 GB (DDR4, 2666MHz) & 8 GB (DDR3, 1333 MHz)\\ \hline
+		Graphics & Radeon Pro 570 (4 GB) & Radeon Pro WX 2100 (2 GB) & AMD Radeon HD 5450 \\ \hline
+		Disk & 1 TB & 500 GB & 1 TB \\ \hline
 	\end{tabular}
 \end{table}
 
@@ -73,7 +82,7 @@ Additional peripherals (monitor, speakers etc.) were added on 25/05/2018, and an
 \end{figure}
 
 \subsection{Installation}
-The official remote control room procedures are outlined in \cite{doc4776}. The software was set up accordingly. It proved difficult to install CentOS on the large Dell tower (monsu1), as we decided to set up a dual-boot alongside the pre-installed Windows OS, in case that machine were to be used again for high-end graphics applications in the future. Additional graphics drivers also needed to be installed.
+The official remote control room procedures are outlined in \cite{doc4776}. The software was set up accordingly. It proved difficult to install CentOS on the large Dell tower (monsu1), as we decided to set up a dual-boot alongside the pre-installed Windows OS, in case that machine were to be used again for high-end graphics applications in the future. Additional graphics drivers also needed to be installed. (Update 05/07/2019: This machine has since been replaced with a smaller tower with the recommended specs for monitoring.)
 
 The installation of the Mac OS was done by ITS, to ensure a supported image of the operating system is used. This caused some problems when changing the system settings (e.g. timezone), as they kept reverting to the University-specific defaults (e.g. UK/London). The issues were eventually fixed by contacting ITS to add the required exceptions for the machine in question. The updated settings will remain consistent, and the config management system will keep them enforced. If any settings need to be changed in the future, this will need to be done by ITS.
 
@@ -95,6 +104,9 @@ A number of desktop entries were created to start the builder log, trigger scope
 	Terminal=true
 \end{Verbatim}
 }
+
+\subsection{Remote access}
+For debugging purposes and detector expert work, remote access to CRSU was enabled on all machines. Remote desktop connections are allowed on {\tt opersu} only, so that detector experts may VNC in. Due to strict firewall regulations, users have to tunnel in via the HPC clusters (e.g. {\tt feynman.hpc.susx.ac.uk}) and thus have a Sussex account in order to SSH in. Both methods have been successfully tested in June 2019.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -194,7 +206,7 @@ To run the supernova GUI, one needs to obtain the significance file periodically
 \qquad\link{http://www.awa.tohoku.ac.jp/kamland/SNmonitor/regist/cgi-bin/regist.py}
 
 In most cases, KamLAND colleagues will then add the requested IP address within a week.
-Another option is to run the app from monag1 via {\tt ssh}.
+Another option is to run the app from {\tt monag1} via {\tt ssh}, which is what the current Desktop shortcut does.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

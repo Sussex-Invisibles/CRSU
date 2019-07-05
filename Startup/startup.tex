@@ -11,7 +11,7 @@
 \parskip 2mm
 
 % Meta
-\title{CRSU Startup}
+\title{CRSU Startup Procedures}
 \author{Michal~Rigan, Martti~Nirkko}
 \affil{University of Sussex}
 \date{\today}
@@ -29,13 +29,13 @@
 	\centering
 	\includegraphics[width=0.8\textwidth]{../Miscellaneous/crsu_mascot}
 	\caption{The correct prononciation of ``CRSU'', and its adorable mascot.}
-% 	\label{crsu_setup}
+	\label{crsu_mascot}
 \end{figure}
 \clearpage
 
-% Table of contents
-\tableofcontents
-\clearpage
+% Table of contents (not required for a <10 page document)
+% \tableofcontents
+% \clearpage
 
 % Main matter
 % -----------
@@ -60,6 +60,7 @@ All machines have the 2 usual accounts configured: the {\tt snoperator} and the 
 \begin{itemize}
 \item \href{mailto:M.Nirkko@sussex.ac.uk}{M.Nirkko@sussex.ac.uk} / @mnirkko / {\tt +44 7948 759 907}
 \item \href{mailto:M.Rigan@sussex.ac.uk}{M.Rigan@sussex.ac.uk} / @MichalR / {\tt +44 7467 380 455}
+\item \href{mailto:Charlie.Mills@sussex.ac.uk}{Charlie.Mills@sussex.ac.uk} / @Charlie Mills / {\tt +44 7794 767 401}
 \end{itemize}
 if you require details or run into trouble.
 
@@ -85,15 +86,16 @@ Before a detector shift is taken at a remote shift station, the shifter must mak
 \end{figure}
 
 \begin{itemize}
-	\item \textbf{Power on UPS}: Turn on the wall power on the far right, behind the {\tt monsu2} monitors. Then turn on the UPS by pressing the power button for 2 seconds. It will make some noise as it turns on, the fan will be clearly audible. The display should indicate the current load and remaining battery time in case of a power outage, as seen in Figure~\ref{ups_display}.
-	\item \textbf{Restart both machines}: this clears out the cache and temp files, frees up RAM, kills unwanted services and (possibly) allows updates to be installed
+	\item \textbf{Power on UPS}: First, turn on the wall power on the far right, behind the {\tt monsu2} monitors. Then, turn on the UPS by pressing the power button for 2 seconds. It will make some noise as it turns on, the fan will be clearly audible. The display should indicate the current load and remaining battery time in case of a power outage, as seen in Figure~\ref{ups_display}.
+	\item \textbf{Restart all machines}: this clears out the cache and temp files, frees up RAM, kills unwanted services and (possibly) allows updates to be installed.
 	\item \textbf{Log in} as {\tt snoperator} on all machines!
-	\item \textbf{Restart the VPN}: this needs to be done on all machines. Find ``Cisco AnyConnect VPN'' (icon on the {\tt opersu} apps dock (bottom of the screen) and monsu apps bar (top left)). Use your SNOLAB IT account and log into {\tt SL-SNOPLUS} for {\tt opersu} and {\tt monsu} and {\tt SL-GEN} on Windows machine. Select ``Connect Anyway'' if there is a pop-up.
+	\item \textbf{Start the VPN}: this needs to be done on all machines. Find ``Cisco AnyConnect VPN'' (icon on the {\tt opersu} apps dock (bottom of the screen) and monsu apps bar (top left)). Use your SNOLAB IT account and log into {\tt SL-SNOPLUS} for {\tt opersu} and {\tt monsu} and {\tt SL-GEN} on Windows VM. Select ``Connect Anyway'' if there is a pop-up.
 	\item \textbf{Check for updates}:
 	\begin{itemize}
 		\item Linux: System tab $\rightarrow$ Administration $\rightarrow$ Software Update \\
 		      (you can also use the aliases {\tt update} and {\tt update-linux})
-		\item Mac: On {\tt opersu}, click the Apple symbol in the application bar $\rightarrow$ About This Mac $\rightarrow$ Software Update 
+		\item Mac: On {\tt opersu}, click the Apple symbol in the application bar \\
+		      $\rightarrow$ About This Mac $\rightarrow$ Software Update 
 		\item Windows: In the VM on {\tt monsu1}, check if there are updates available using the window update icon in the bottom-right corners (there are none available if it is not there).
 	\end{itemize}
 \end{itemize}
@@ -102,12 +104,12 @@ Before a detector shift is taken at a remote shift station, the shifter must mak
 \section{Startup procedures}
 The usual procedure to start up all required software (note that the {\tt monsu} machines have multiple virtual workspaces that you can navigate around using the CTRL + ALT + Arrows) is as follows:
 \begin{itemize}
-	\item Power on the UPS and the physical machines, log in as {\tt snoperator}.
-	\item Start-up Windows on the VirtualBox: On {\tt monsu1} there is icon ``Oracle VM VirtualBox'' located on the top right of the desktop. Start the app, select the latest snapshot of Windows 7 Pro (either double click the item in the list on the left or click the ``Start'' green arrow). Log in as snoperator. Connect to VPN using the ``VPN Client'' icon on the desktop. Connect to the {\tt SL-GEN} group. (Connecting to the VPN on Virtual machine can result in disconnecting from another VPN on another machine - this is Cisco security to prevent from overloading. Be sure to reconnect and everything runs fine - it only disconnects once!). Start up the phone application by selecting the ``IP Phone'' icon on the desktop. Finally open the UPS platform\footnote{Note that this refers to the detector UPS located at SNOLAB, not the one powering this remote shift station.} using the bookmark in firefox web browser (the UPS platform only works on {\tt SL-GEN}, therefore can only be opened on this VM).
+	\item {\bf Double-check that the wall socket is switched on!} Then power on the UPS and the physical machines, and log in as {\tt snoperator}. 
+	\item Start-up Windows on the VirtualBox: On {\tt monsu1} there is an icon ``Oracle VM VirtualBox'' located on the top right of the desktop. Start the app, select the latest snapshot of Windows 7 Pro (either double click the item in the list on the left or click the ``Start'' green arrow). Log in as snoperator. Connect to VPN using the ``VPN Client'' icon on the desktop. Connect to the {\tt SL-GEN} group. (Connecting to the VPN on Virtual machine can result in disconnecting from another VPN on another machine - this is Cisco security to prevent from overloading. Be sure to reconnect and everything runs fine - it only disconnects once!). Start up the phone application by selecting the ``IP Phone'' icon on the desktop. %Finally open the UPS platform\footnote{Note that this refers to the detector UPS located at SNOLAB, not the one powering this remote shift station.} using the bookmark in firefox web browser (the UPS platform only works on {\tt SL-GEN}, therefore can only be opened on this VM).
 	\item Connect to VPN software on all machines: Find ``Cisco AnyConnect VPN'' (icon on the {\tt opersu} apps dock (bottom of the screen) and monsu apps bar (top left)). Use your snolab account and log into {\tt SL-SNOPLUS}. Select ``Connect Anyway'' if there is a pop-up (again, check if you weren't disconnected randomly on other machines)
 	\item On {\tt monsu1}:
 	\begin{itemize}
-		\item Start up: Alarm GUI, FEC FIFO, MTC GUI, Supernova monitor, DAQ log and Builder log by clicking appropriate icons on the desktop (use multiple workspaces as appropriate). Sometimes a DB connection pop-up appears for the {\tt alarmGUI} (possibly other apps), use the collaboration log-in to connect. Supernova and Builder require the snoperator's password to connect.		
+		\item Start up: Alarm GUI, FEC FIFO, MTC GUI, Supernova monitor, DAQ log, Builder log and Deck GUI by clicking appropriate icons on the desktop (use multiple workspaces as appropriate). Sometimes a DB connection pop-up appears for the {\tt alarmGUI} (possibly other apps), use the collaboration log-in to connect. Supernova and Builder require the snoperator's password to connect.		
 			\item Run Scope from the desktop (icon).
 			\item This machine also runs Check Rates and Polling GUI when needed during the shift by selecting appropriate application on the desktop. List of all application is also available at Applications $\rightarrow$ Other from the taskbar.
 		\item Make sure the virtual phone software is running on windows virtual machine as described above.
@@ -132,7 +134,7 @@ The usual procedure to start up all required software (note that the {\tt monsu}
 
 % -----------
 \section{Fire alarms}
-Make sure you have your mobile phone and a piece of paper with the expert's contact details. If you incur a large personal phone bill, please claim this on staff expenses (budget code {\tt TB006-23}) and get Simon Peeters to sign it off for you.
+In case of a fire alarm that lasts longer than 10 seconds, you will have to leave the building immediately. {\bf Stay safe} -- never risk personal harm! Make sure you have your mobile phone (with Slack installed!) and a piece of paper with the expert's contact details. If you incur a large personal phone bill due to an emergency handover, please claim this on staff expenses (budget code {\tt TB006-23}) and get Simon Peeters to sign it off for you.
 
 % -----------
 \section{Ideas}
